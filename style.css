@@ -37,6 +37,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Content
 	## Posts and pages
 	## Comments
+	## Aside
+	## Footer
 # Infinite scroll
 # Media
 	## Captions
@@ -910,6 +912,16 @@ body.custom-background .mx-site_content {
 	margin: 1.5em 0 0;
 }
 
+.content-area {
+	background: rgba(253, 252, 252, 0.99);
+	-webkit-box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	padding: 15px;
+    margin: 12px 0px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
@@ -925,6 +937,33 @@ body.custom-background .mx-site_content {
 .bypostauthor {
 	display: block;
 }
+
+/*--------------------------------------------------------------
+## Aside
+--------------------------------------------------------------*/
+aside.widget-area section {
+    background: rgba(253, 252, 252, 0.99);
+	-webkit-box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	padding: 15px;
+    margin: 12px 0px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+footer.site-footer section {
+	/*background: rgba(253, 252, 252, 0.99);
+	-webkit-box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
+	padding: 15px;
+    margin: 12px 0px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;*/
+}
+
 
 /*--------------------------------------------------------------
 # Infinite scroll

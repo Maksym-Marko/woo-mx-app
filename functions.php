@@ -104,6 +104,8 @@ add_action( 'after_setup_theme', 'woo_mx_app_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function woo_mx_app_widgets_init() {
+	
+	// left sidebar
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'woo-mx-app' ),
 		'id'            => 'sidebar-1',
@@ -113,6 +115,18 @@ function woo_mx_app_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	// footer 1
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 1', 'woo-mx-app' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add widgets to footer area 1 here.', 'woo-mx-app' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s col">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
 }
 add_action( 'widgets_init', 'woo_mx_app_widgets_init' );
 
