@@ -107,9 +107,20 @@ function woo_mx_app_widgets_init() {
 	
 	// left sidebar
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'woo-mx-app' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'woo-mx-app' ),
+		'name'          => esc_html__( 'Left Sidebar', 'woo-mx-app' ),
+		'id'            => 'sidebar-left',
+		'description'   => esc_html__( 'Add widgets to the left sidebar.', 'woo-mx-app' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	// right sidebar
+	register_sidebar( array(
+		'name'          => esc_html__( 'Right Sidebar', 'woo-mx-app' ),
+		'id'            => 'sidebar-right',
+		'description'   => esc_html__( 'Add widgets to the right sidebar.', 'woo-mx-app' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -121,6 +132,17 @@ function woo_mx_app_widgets_init() {
 		'name'          => esc_html__( 'Footer 1', 'woo-mx-app' ),
 		'id'            => 'footer-1',
 		'description'   => esc_html__( 'Add widgets to footer area 1 here.', 'woo-mx-app' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s col">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	// footer 2
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2', 'woo-mx-app' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add widgets to footer area 2 here.', 'woo-mx-app' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s col">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

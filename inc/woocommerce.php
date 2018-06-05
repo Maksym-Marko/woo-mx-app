@@ -159,7 +159,7 @@ if ( ! function_exists( 'woo_mx_app_woocommerce_wrapper_before' ) ) {
 	 */
 	function woo_mx_app_woocommerce_wrapper_before() {
 		?>
-		<div id="primary" class="content-area">
+		<div id="primary" class="content-area col-8">
 			<main id="main" class="site-main" role="main">
 			<?php
 	}

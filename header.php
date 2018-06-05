@@ -22,9 +22,11 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'woo-mx-app' ); ?></a>
+	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'woo-mx-app' ); ?></a> -->
 
-	<header id="masthead" class="site-header container-fluid mx-header">
+	<?php $header_bg = get_custom_header()->url; ?>
+
+	<header id="masthead" class="site-header container-fluid mx-header" style="background-image: url( <?php echo $header_bg ?> );">	
 
 		<div class="mx-headre_line row">
 
@@ -86,4 +88,4 @@
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content container-fluid mx-site_content">
-		<div class="row">
+		<div class="row justify-content-center">

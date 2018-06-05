@@ -19,6 +19,10 @@
 			
 			<?php dynamic_sidebar( 'footer-1' ); ?>
 
+			<div class="w-100"></div>
+
+			<?php dynamic_sidebar( 'footer-2' ); ?>
+
 			<div class="site-info col-12">
 				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'woo-mx-app' ) ); ?>">
 					<?php

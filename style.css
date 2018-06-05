@@ -73,12 +73,6 @@ body {
 	margin: 0;
 }
 
-body.custom-background {
-	-webkit-background-size: 100% !important;
-	background-size: 100% !important;
-	background-repeat: no-repeat !important;
-}
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -665,6 +659,9 @@ a:hover, a:active {
 
 header.mx-header {
 	height: 100vh;
+	-webkit-background-size: 100% !important;
+	background-size: 100% !important;
+	background-repeat: no-repeat !important;
 }
 
 /*--------------------------------------------------------------
@@ -762,14 +759,14 @@ header.mx-header {
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
-	float: left;
+	/*float: left;*/
 	width: 50%;
 }
 
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-	float: right;
+	/*float: right;*/
 	text-align: right;
 	width: 50%;
 }
@@ -942,13 +939,13 @@ body.custom-background .mx-site_content {
 ## Aside
 --------------------------------------------------------------*/
 aside.widget-area section {
-    background: rgba(253, 252, 252, 0.99);
 	-webkit-box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
 	box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
 	padding: 15px;
     margin: 12px 0px;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
+	background: #e8e8e8;
 }
 
 /*--------------------------------------------------------------
@@ -961,9 +958,11 @@ footer.site-footer section {
 	padding: 15px;
     margin: 12px 0px;
 	border-radius: 5px;
-	-webkit-border-radius: 5px;*/
+	-webkit-border-radius: 5px;*/	
 }
-
+footer.site-footer {
+	background-color: #000;
+}
 
 /*--------------------------------------------------------------
 # Infinite scroll
