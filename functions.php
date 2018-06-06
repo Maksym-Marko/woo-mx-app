@@ -149,6 +149,17 @@ function woo_mx_app_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
+	// footer-copyright
+	register_sidebar( array(
+		'name'          => esc_html__( 'Copyright', 'woo-mx-app' ),
+		'id'            => 'footer-copyright',
+		'description'   => esc_html__( 'You can set copyright fot your site.', 'woo-mx-app' ),
+		'before_widget' => '<div id="%1$s" class="widget-copyright %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h2 class="widget-title-copyright">',
+		'after_title'   => '</h2>',
+	) );
+
 }
 add_action( 'widgets_init', 'woo_mx_app_widgets_init' );
 
@@ -348,4 +359,15 @@ function woo_mx_app_change_search_form( $form ){
 	</form>';
 
 	return $form;
+}
+
+// include sidebars from the inc folder
+if ( ! function_exists( 'woo_mx_app_get_sidebar' ) ) {
+
+	function woo_mx_app_get_sidebar( $name ) {
+
+		get_template_part( 'inc/sidebars/sidebar', $name );
+
+	}
+
 }

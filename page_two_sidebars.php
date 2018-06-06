@@ -8,7 +8,7 @@
 get_header();
 
 // get left sidebar
-get_template_part( 'template-parts/sidebar', 'left' );
+woo_mx_app_get_sidebar( 'left' );
 
 ?>
 
@@ -33,5 +33,8 @@ get_template_part( 'template-parts/sidebar', 'left' );
 	</div><!-- #primary -->
 
 <?php
+// get right sidebar
 get_sidebar();
+
+// get footer
 get_footer();

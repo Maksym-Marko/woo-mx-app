@@ -7,7 +7,8 @@
 
 get_header();
 
-get_sidebar();
+// get left sidebar
+woo_mx_app_get_sidebar( 'left' );
 ?>
 
 	<div id="primary" class="content-area col-8">

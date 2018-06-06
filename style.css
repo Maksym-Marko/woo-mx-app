@@ -888,9 +888,6 @@ header.mx-header {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-body.custom-background .mx-site_content {
-	background-color: #fff;
-}
 .sticky {
 	display: block;
 }
@@ -952,16 +949,14 @@ aside.widget-area section {
 ## Footer
 --------------------------------------------------------------*/
 footer.site-footer section {
-	/*background: rgba(253, 252, 252, 0.99);
-	-webkit-box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
-	box-shadow: 0px -1px 12px -3px rgba(0,0,0,0.52);
-	padding: 15px;
-    margin: 12px 0px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;*/	
+
 }
+
 footer.site-footer {
 	background-color: #000;
+}
+footer .mx-copyright {
+	text-align: center;
 }
 
 /*--------------------------------------------------------------
