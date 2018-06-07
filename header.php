@@ -21,6 +21,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+<?php 
+	var_dump( woo_mx_app_get_post_meta_by_key( '_woo_mx_app_type_main_menu' ) );
+?>
+
 <div id="page" class="site">
 	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'woo-mx-app' ); ?></a> -->
 
