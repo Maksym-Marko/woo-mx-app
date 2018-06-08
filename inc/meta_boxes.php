@@ -1,5 +1,7 @@
 <?php
-// create meta_boxes for layout
+/*
+* Create meta_boxes for the layout style
+*/
 add_action( 'add_meta_boxes', 'woo_mx_app_layout_header_box' );
 
 function woo_mx_app_layout_header_box() {
@@ -16,43 +18,93 @@ function woo_mx_app_layout_header_box() {
 
 }
 
-// appearance layout of header
+/*
+* Create the Metabox panel in the admin panel to configure the layout
+*/
 function woo_mx_app_layout_header_box_callback( $post, $meta ) {
 
 	$screens = $meta['args'];
 
-	// We use nonce for verification
-	wp_nonce_field( plugin_basename(__FILE__), 'woo_mx_app_layout_header_nonce' );
+	// Use nonce for verification
+	wp_nonce_field( plugin_basename( __FILE__ ), 'woo_mx_app_layout_header_nonce' );
 
 	/***************************
-	* layout_header
+	* Header layout
 	*/
 	$data_layout_header = get_post_meta( $post->ID, '_woo_mx_app_layout_header', true );
 
-	echo '<label for="woo_mx_app_layout_header_field">' . __( 'Type of header', 'woo-mx-app' ) . '</label> ';
+	$data_layout_header = esc_attr( $data_layout_header );
 
-	echo '<input type="text" id="woo_mx_app_layout_header_field" name="woo_mx_app_layout_header_field" value="' . esc_attr( $data_layout_header ) . '" size="25" />';
+	// Array of the option values
+	$layout_header_values = array(
 
-	echo '<hr>';
+		'Default Header',
+		'Video Header'
+
+	);
+
+	// Display the field with the settings
+	?>
+	<div class="mx-metabox_wrap">
+
+		<label for="woo_mx_app_layout_header_field"><?php echo __( 'Type of header', 'woo-mx-app' ); ?></label>
+
+		<select id="woo_mx_app_layout_header_field" name="woo_mx_app_layout_header_field">
+			
+			<?php foreach( $layout_header_values as $value ) : ?>
+
+				<option value="<?php echo $value; ?>"
+				<?php if ( $data_layout_header == $value ) echo 'selected';?>><?php echo $value; ?></option>
+
+			<?php endforeach; ?>
+
+		</select>
+	</div>
+
+	<?php
 
 	/***************************
-	* type_menu
+	* Style of the main menu
 	*/
 	$data_type_menu = get_post_meta( $post->ID, '_woo_mx_app_type_main_menu', true );
 
-	echo '<label for="woo_mx_app_type_main_menu_field">' . __( 'Type of main menu', 'woo-mx-app' ) . '</label> ';
+	$data_type_menu = esc_attr( $data_type_menu );
 
-	echo '<input type="text" id="woo_mx_app_type_main_menu_field" name="woo_mx_app_type_main_menu_field" value="' . esc_attr( $data_type_menu ) . '" size="25" />';
+	// Array of the option values
+	$main_meny_values = array(
+
+		'Default Menu',
+		'Fixed Menu'
+
+	);
+
+	?>
+	<div class="mx-metabox_wrap">
+
+		<label for="woo_mx_app_type_main_menu_field"><?php echo __( 'Type of main menu', 'woo-mx-app' ); ?></label>
+
+		<select id="woo_mx_app_type_main_menu_field" name="woo_mx_app_type_main_menu_field">
+			
+			<?php foreach( $main_meny_values as $value ) : ?>
+
+				<option value="<?php echo $value; ?>"
+				<?php if ( $data_type_menu == $value ) echo 'selected';?>><?php echo $value; ?></option>
+
+			<?php endforeach; ?>
+
+		</select>
+	</div>
+
+	<?php
 
 }
 
-// Save data when the post is saved
+/*
+* Save data when the post is saved
+*/
 add_action( 'save_post', 'woo_mx_app_save_postdata' );
 
 function woo_mx_app_save_postdata( $post_id ) {
-
-	// is isset $_POST
-	if ( ! isset( $_POST['woo_mx_app_layout_header_field'] ) ) return;
 
 	// check the nonce
 	if ( ! wp_verify_nonce( $_POST['woo_mx_app_layout_header_nonce'], plugin_basename(__FILE__) ) ) return;
@@ -63,8 +115,8 @@ function woo_mx_app_save_postdata( $post_id ) {
 	// check the user's rights
 	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
-	/***************************
-	* layout_header
+	/*************************************
+	* Save settings for the header layout.
 	*/
 		// Clear the value of the input field woo_mx_app_layout_header_field
 		$layout_header_data = sanitize_text_field( $_POST['woo_mx_app_layout_header_field'] );
@@ -72,18 +124,22 @@ function woo_mx_app_save_postdata( $post_id ) {
 		// Update the value of the '_woo_mx_app_layout_header' in the database
 		update_post_meta( $post_id, '_woo_mx_app_layout_header', $layout_header_data );
 
-	/***************************
-	* type_menu
+	/***************************************
+	* Save settings for the main menu style
 	*/
-		// Clear the value of the input field woo_mx_app_layout_header_field
+		// Clear the value of the input field woo_mx_app_type_main_menu_field
 		$layout_header_data = sanitize_text_field( $_POST['woo_mx_app_type_main_menu_field'] );
 
-		// Update the value of the '_woo_mx_app_layout_header' in the database
+		// Update the value of the '_woo_mx_app_type_main_menu' in the database
 		update_post_meta( $post_id, '_woo_mx_app_type_main_menu', $layout_header_data );
 
 }
 
-// get post meta
+/*
+* Obtain metadata with a specific key.
+* If the key is not set, the function returns an array
+* of all values of a particular post.
+*/
 if ( ! function_exists( 'woo_mx_app_get_post_meta_by_key' ) ) {
 
 	function woo_mx_app_get_post_meta_by_key( $key ) {		
@@ -100,7 +156,7 @@ if ( ! function_exists( 'woo_mx_app_get_post_meta_by_key' ) ) {
 		}
 
 		// return value if set key
-		return get_post_meta( $_post_ID )[$key][0];
+		return get_post_meta( $_post_ID, $key, true );
 
 	}
 }

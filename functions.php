@@ -164,7 +164,7 @@ function woo_mx_app_widgets_init() {
 add_action( 'widgets_init', 'woo_mx_app_widgets_init' );
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts and styles frontend.
  */
 function woo_mx_app_scripts() {
 
@@ -181,6 +181,16 @@ function woo_mx_app_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'woo_mx_app_scripts' );
+
+/**
+ * Enqueue scripts and styles admin panel.
+ */
+function woo_mx_app_admin_scripts() {
+
+	wp_enqueue_style( 'woo-mx-app-admin-style', get_template_directory_uri() . '/css/admin.css', array(), '20180608', 'all' );
+
+}
+add_action( 'admin_enqueue_scripts', 'woo_mx_app_admin_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -236,7 +246,7 @@ if ( ! function_exists( 'woo_mx_app_get_sidebar' ) ) {
 
 	function woo_mx_app_get_sidebar( $name ) {
 
-		get_template_part( 'inc/sidebars/sidebar', $name );
+		get_template_part( 'template-parts/sidebars/sidebar', $name );
 
 	}
 
